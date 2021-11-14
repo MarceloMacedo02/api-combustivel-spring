@@ -101,4 +101,12 @@ public class VeiculoService extends AbstractService<Veiculo> {
 		Page<VeiculoSampleDTO> baseDtos = pages.map(x -> new VeiculoSampleDTO(x));
 		return baseDtos;
 	}
+	public Page<VeiculoSampleDTO> findAllPagedStatus(String value,String ativo, Pageable pageable) {
+		Veiculo u = new Veiculo();
+		u.setAtivo(ativo);
+		u.setPlaca(value);
+		Page<Veiculo> pages = findAllPaged("nome", u, pageable);
+		Page<VeiculoSampleDTO> baseDtos = pages.map(x -> new VeiculoSampleDTO(x));
+		return baseDtos;
+	}
 }
