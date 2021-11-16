@@ -1,13 +1,11 @@
 package br.com.zonesoftware.apicombustivel.service;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -23,11 +21,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.zonesoftware.apicombustivel.dto.BaseDTO;
+import br.com.zonesoftware.apicombustivel.auth.UserSS;
 import br.com.zonesoftware.apicombustivel.excptions.DatabaseException;
 import br.com.zonesoftware.apicombustivel.excptions.ResourceNotFoundException;
 import br.com.zonesoftware.apicombustivel.model.BaseEntity;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 /**
  * @param <T>
  * @author Daniel
@@ -114,8 +113,7 @@ public abstract class AbstractService<T extends BaseEntity> {
 	
 	@Transactional(readOnly = true)
 	public Page<T> findAllPaged(String field,T obj, Pageable pageable) {
-
-	 
+	  
 
 		ExampleMatcher matcher = ExampleMatcher
 				.matchingAll()

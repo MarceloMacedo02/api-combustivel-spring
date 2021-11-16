@@ -1,5 +1,5 @@
 package br.com.zonesoftware.apicombustivel.model;
 
 public enum PerfilAcesso {
-    AMINISTRADOR, SUPER_ADMINISTRADOR
+    ADMINISTRADOR, SUPER_ADMINISTRADOR
 }

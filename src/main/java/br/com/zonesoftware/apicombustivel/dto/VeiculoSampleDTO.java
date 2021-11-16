@@ -31,7 +31,7 @@ public class VeiculoSampleDTO implements BaseDTO, Serializable {
 		this.ativo = v.getAtivo();
 		this.responsavel = v.getResponsavel().getNome();
 		this.conservacao = v.getConservacao();
-		this.ano = v.getAno();
+		this.ano = v.getVeiculoFipe().getCodigoano();
 		this.setor = v.getSetor().getNome();
 	}
 	

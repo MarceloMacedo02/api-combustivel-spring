@@ -39,8 +39,8 @@ public abstract class AbstractController<T extends BaseEntity> {
      * @param entity
      * @return
      */
-    @ApiOperation(value="Salvar Entidade")
     @PostMapping
+    @ApiOperation(value="Salvar Entidade")
     public ResponseEntity salvar(@RequestBody
                                  @Valid T entity,
                                  BindingResult errors) {

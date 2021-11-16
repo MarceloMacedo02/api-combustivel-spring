@@ -33,7 +33,7 @@ public class Veiculo implements BaseEntity {
 	@Column(length = 10, unique = true)
 	private String placa;
 
-	@NotNull
+//	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "modelo_id")
 	private Modelo modelo;
@@ -54,7 +54,7 @@ public class Veiculo implements BaseEntity {
 	private String tombamento;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate aquisicao;
 	
 	@Convert(converter = SimNaoConverter.class)
@@ -83,14 +83,14 @@ public class Veiculo implements BaseEntity {
 	/**
 	 * pode ser ano/ano
 	 */
-	@NotEmpty
+//	@NotEmpty
 	private String ano;
 
 	@NotNull
 	@OneToOne
 	private Setor setor;
 
-	@NotNull
+//	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "tipo_combustivel_id")
 	private TipoCombustivel tipoCombustivel;

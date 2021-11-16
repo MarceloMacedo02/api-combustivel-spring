@@ -97,15 +97,15 @@ public class VeiculoService extends AbstractService<Veiculo> {
 	public Page<VeiculoSampleDTO> findAllPaged(String value, Pageable pageable) {
 		Veiculo u = new Veiculo();
 		u.setPlaca(value);
-		Page<Veiculo> pages = findAllPaged("nome", u, pageable);
+		Page<Veiculo> pages = findAllPaged("placa", u, pageable);
 		Page<VeiculoSampleDTO> baseDtos = pages.map(x -> new VeiculoSampleDTO(x));
 		return baseDtos;
 	}
 	public Page<VeiculoSampleDTO> findAllPagedStatus(String value,String ativo, Pageable pageable) {
 		Veiculo u = new Veiculo();
-		u.setAtivo(ativo);
-		u.setPlaca(value);
-		Page<Veiculo> pages = findAllPaged("nome", u, pageable);
+//		u.setAtivo(ativo);
+//		u.setPlaca(value);
+		Page<Veiculo> pages = repository.findByPlacaContainingIgnoreCaseAndAtivo(value,ativo, pageable);
 		Page<VeiculoSampleDTO> baseDtos = pages.map(x -> new VeiculoSampleDTO(x));
 		return baseDtos;
 	}
