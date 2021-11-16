@@ -1,8 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-[remote "origin"]
-	url = https://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@github.com/MarceloMacedo02/api-combustivel-spring.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
