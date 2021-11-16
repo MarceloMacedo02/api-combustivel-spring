@@ -68,6 +68,7 @@ public abstract class AbstractService<T extends BaseEntity> {
 	public T update(Long id, T obj) {
 
 		try {
+			obj.setId(id);
 			T thisobj = (T) getRepository().findById(id).get();
 			BeanUtils.copyProperties(obj, thisobj, getNullPropertyNames(obj));
 			obj = (T) getRepository().save(obj);

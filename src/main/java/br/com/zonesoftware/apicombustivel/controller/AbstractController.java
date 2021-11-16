@@ -70,8 +70,9 @@ public abstract class AbstractController<T extends BaseEntity> {
     @PutMapping(value = "/update/{id}")
     @ApiOperation(value="Atualizar Entidade")
 	public ResponseEntity<T> update(@PathVariable Long id, 
-			@RequestBody @Valid  T entity) {
-    	entity = (@Valid T) getService().update(id, entity);
+			@RequestBody   T entity) {
+    	entity =   (T) getService().update(id, entity);
+    	
 		return ResponseEntity.ok().body(entity);
 	}
 //    /**

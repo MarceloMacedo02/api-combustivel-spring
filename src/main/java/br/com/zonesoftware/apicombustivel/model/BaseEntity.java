@@ -9,5 +9,5 @@ import java.io.Serializable;
 public interface BaseEntity extends Serializable {
     
     public Long getId();
-    
+    void setId(Long id);
 }
