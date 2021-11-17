@@ -48,17 +48,17 @@ public class ModeloController extends AbstractController<Modelo> {
 
     @GetMapping("/importar")
     public void importar() {
-        fabricanteService.findAll().forEach(f -> {
-            var restTemplate = new RestTemplate();
-            Modelo[] modelos = restTemplate
-                    .getForObject(URL_RESOURCE.replace(":id", f.getId().toString()), Modelo[].class);
-            Arrays.stream(modelos).forEach(m -> {
-                if (!getService().findById(f.getId()).isPresent()) {
-                    m.setFabricante(f);
-                    getService().save(m);
-                }
-            });
-        });
+//        fabricanteService.findAll().forEach(f -> {
+//            var restTemplate = new RestTemplate();
+//            Modelo[] modelos = restTemplate
+//                    .getForObject(URL_RESOURCE.replace(":id", f.getId().toString()), Modelo[].class);
+//            Arrays.stream(modelos).forEach(m -> {
+//                if (!getService().findById(f.getId()).isPresent()) {
+//                    m.setFabricante(f);
+//                    getService().save(m);
+//                }
+//            });
+//        });
     }
 
 }
