@@ -23,7 +23,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.zonesoftware.apicombustivel.model.BaseEntity;
 import br.com.zonesoftware.apicombustivel.service.AbstractService;
-import io.swagger.annotations.ApiOperation;
 
 public abstract class AbstractController<T extends BaseEntity> {
 
@@ -39,8 +38,7 @@ public abstract class AbstractController<T extends BaseEntity> {
      * @param entity
      * @return
      */
-    @PostMapping
-    @ApiOperation(value="Salvar Entidade")
+    @PostMapping 
     public ResponseEntity salvar(@RequestBody
                                  @Valid T entity,
                                  BindingResult errors) {
@@ -52,8 +50,7 @@ public abstract class AbstractController<T extends BaseEntity> {
         return new ResponseEntity(getService().save(entity), entity.getId() == null ? HttpStatus.CREATED : HttpStatus.OK);
 
     }
-    @PostMapping("/insert")
-    @ApiOperation(value="Inserir Entidade")
+    @PostMapping("/insert") 
 	public ResponseEntity<Long> insert( @RequestBody    T obj) {
     	obj = ( T) getService().insert(obj);
 		java.net.URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -67,8 +64,7 @@ public abstract class AbstractController<T extends BaseEntity> {
      * @param entity
      * @return
      */
-    @PutMapping(value = "/update/{id}")
-    @ApiOperation(value="Atualizar Entidade")
+    @PutMapping(value = "/update/{id}") 
 	public ResponseEntity<T> update(@PathVariable Long id, 
 			@RequestBody   T entity) {
     	entity =   (T) getService().update(id, entity);
@@ -88,8 +84,7 @@ public abstract class AbstractController<T extends BaseEntity> {
      * @param id
      * @return
      */
-    @DeleteMapping("/{id}")
-    @ApiOperation(value="Excluir Entidade")
+    @DeleteMapping("/{id}") 
     public ResponseEntity excluir(@PathVariable("id") Long id) {
 
         T entity = (T) getService().findById(id).orElse(null);
@@ -114,8 +109,7 @@ public abstract class AbstractController<T extends BaseEntity> {
      *
      * @return
      */
-    @GetMapping
-    @ApiOperation(value="Listar todas entidades")
+    @GetMapping 
     public ResponseEntity<List<T>> listar() {
         return ResponseEntity.ok(getService().findAll());
     }
@@ -131,8 +125,7 @@ public abstract class AbstractController<T extends BaseEntity> {
      *
      * @return
      */
-    @GetMapping("/{id}")
-    @ApiOperation(value="encontrar entidade")
+    @GetMapping("/{id}") 	
     public ResponseEntity<T> findById(@PathVariable("id") Long id) {
         T entity = (T) getService().findById(id).orElse(null);
 
