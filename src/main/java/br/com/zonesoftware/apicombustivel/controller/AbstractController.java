@@ -65,11 +65,11 @@ public abstract class AbstractController<T extends BaseEntity> {
      * @return
      */
     @PutMapping(value = "/update/{id}") 
-	public ResponseEntity<T> update(@PathVariable Long id, 
+	public ResponseEntity<Long> update(@PathVariable Long id, 
 			@RequestBody   T entity) {
     	entity =   (T) getService().update(id, entity);
     	
-		return ResponseEntity.ok().body(entity);
+		return ResponseEntity.ok().body(entity.getId());
 	}
 //    /**
 //     * @param id
@@ -132,7 +132,6 @@ public abstract class AbstractController<T extends BaseEntity> {
         if (entity == null) {
             return ResponseEntity.notFound().build();
         }
-
         return ResponseEntity.ok((T) entity);
     }
 
